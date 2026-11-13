@@ -53,7 +53,7 @@ def init_state():
 
 def log(actor: str, action: str):
     st.session_state.audit.append(
-        {"Time": datetime.now().strftime("%H:%M:%S"), "Actor": actor, "Action": action}
+        {"Time": datetime.utcnow().strftime("%H:%M:%S") + " UTC", "Actor": actor, "Action": action}
     )
 
 
@@ -70,7 +70,7 @@ def main():
     init_state()
 
     st.title("🔍 Headhunter Agent")
-    st.markdown("**Demo: Consented candidate search for verified recruiters.**")
+    st.markdown("**Demo: Consented candidate search for recruiters.**")
 
     st.sidebar.header("Agent Rules")
     st.sidebar.info(
